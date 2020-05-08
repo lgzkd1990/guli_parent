@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-05-08
  */
 @RestController
-@RequestMapping("/eduservice/edu-course")
+@RequestMapping("/eduservice/course")
 public class EduCourseController {
     @Autowired
     private EduCourseService courseService;

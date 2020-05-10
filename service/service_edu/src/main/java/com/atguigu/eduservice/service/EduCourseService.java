@@ -14,6 +14,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-05-08
  */
 public interface EduCourseService extends IService<EduCourse> {
+
     //添加课程基本信息的方法
     String saveCourseInfo(CourseInfoVo courseInfoVo);
 
@@ -25,4 +26,7 @@ public interface EduCourseService extends IService<EduCourse> {
 
     //根据课程id查询课程确认信息
     CoursePublishVo publishCourseInfo(String id);
+
+    //删除课程
+    void removeCourse(String courseId);
 }

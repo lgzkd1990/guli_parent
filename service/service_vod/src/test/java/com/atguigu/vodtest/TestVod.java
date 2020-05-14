@@ -14,11 +14,23 @@ import java.util.List;
 public class TestVod {
 
     public static void main(String[] args) {
+
+
+        try {
+            getPlayUrl();
+            getPlayAuth();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //测试上传
+    public static void uploadTest() {
+        String title = "6 - What If I Want to Move Faster - upload by sdk";   //上传之后文件名称
+        String fileName = "C:\\Users\\lgzkd\\Desktop\\6 - What If I Want to Move Faster.mp4";  //本地文件路径和名称
         String accessKeyId = "LTAIsorUhvTzp5PJ";
         String accessKeySecret = "2NRgCOlOUv5aMREbEowzW2ZcikZrUM";
-
-        String title = "6 - What If I Want to Move Faster - upload by sdk";   //上传之后文件名称
-        String fileName = "F:/6 - What If I Want to Move Faster.mp4";  //本地文件路径和名称
         //上传视频的方法
         UploadVideoRequest request = new UploadVideoRequest(accessKeyId, accessKeySecret, title, fileName);
         /* 可指定分片上传时每个分片的大小，默认为2M字节 */
@@ -40,29 +52,30 @@ public class TestVod {
     }
 
     //1 根据视频iD获取视频播放凭证
-    public static void getPlayAuth() throws Exception{
+    public static void getPlayAuth() throws Exception {
 
-        DefaultAcsClient client = InitObject.initVodClient("LTAI4FvvVEWiTJ3GNJJqJnk7", "9st82dv7EvFk9mTjYO1XXbM632fRbG");
+        DefaultAcsClient client = InitObject.initVodClient("LTAIsorUhvTzp5PJ", "2NRgCOlOUv5aMREbEowzW2ZcikZrUM");
 
         GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
         GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
 
-        request.setVideoId("474be24d43ad4f76af344b9f4daaabd1");
+        request.setVideoId("b2df4de867134bf3ac5794eae8db0ff6");
 
         response = client.getAcsResponse(request);
-        System.out.println("playAuth:"+response.getPlayAuth());
+        System.out.println("playAuth:" + response.getPlayAuth());
     }
+
     //1 根据视频iD获取视频播放地址
-    public static void getPlayUrl() throws Exception{
+    public static void getPlayUrl() throws Exception {
         //创建初始化对象
-        DefaultAcsClient client = InitObject.initVodClient("LTAI4FvvVEWiTJ3GNJJqJnk7", "9st82dv7EvFk9mTjYO1XXbM632fRbG");
+        DefaultAcsClient client = InitObject.initVodClient("LTAIsorUhvTzp5PJ", "2NRgCOlOUv5aMREbEowzW2ZcikZrUM");
 
         //创建获取视频地址request和response
         GetPlayInfoRequest request = new GetPlayInfoRequest();
         GetPlayInfoResponse response = new GetPlayInfoResponse();
 
         //向request对象里面设置视频id
-        request.setVideoId("474be24d43ad4f76af344b9f4daaabd1");
+        request.setVideoId("b2df4de867134bf3ac5794eae8db0ff6");
 
         //调用初始化对象里面的方法，传递request，获取数据
         response = client.getAcsResponse(request);
